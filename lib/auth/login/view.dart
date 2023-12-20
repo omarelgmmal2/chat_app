@@ -69,11 +69,17 @@ class _LoginChatAppState extends State<LoginChatApp> {
                     CustomTextFormField(
                       title: "Email",
                       controller: emailController,
+                      onChange: (p0) {
+                        email = p0;
+                        setState(() {
+
+                        });
+                      },
                       validator: (value) {
                         if(value!.isEmpty)
                           {
                             return "Enter your email";
-                          }else if(value.length < 20)
+                          }else if(value.length < 15)
                         {
                           return "The email is weak";
                         } else {
@@ -86,6 +92,12 @@ class _LoginChatAppState extends State<LoginChatApp> {
                     CustomTextFormField(
                       title: "Password",
                       controller: passwordController,
+                      onChange: (p0) {
+                        password = p0;
+                        setState(() {
+
+                        });
+                      },
                       validator: (value) {
                         if(value!.isEmpty)
                         {
@@ -117,7 +129,7 @@ class _LoginChatAppState extends State<LoginChatApp> {
                     });
                     try {
                       UserCredential user = await FirebaseAuth.instance
-                          .createUserWithEmailAndPassword(
+                          .signInWithEmailAndPassword(
                         email: email!,
                         password: password!,
                       );

@@ -69,10 +69,17 @@ class _RegisterChatAppState extends State<RegisterChatApp> {
                       controller: emailController,
                       onChange: (data) {
                         email = data;
+                        setState(() {
+
+                        });
                       },
                       validator: (value) {
-                        if (value!.isEmpty) {
+                        if(value!.isEmpty)
+                        {
                           return "Enter your email";
+                        }else if(value.length < 15)
+                        {
+                          return "The email is weak";
                         } else {
                           return null;
                         }
@@ -85,6 +92,9 @@ class _RegisterChatAppState extends State<RegisterChatApp> {
                       controller: passwordController,
                       onChange: (data) {
                         password = data;
+                        setState(() {
+
+                        });
                       },
                       validator: (value) {
                         if (value!.isEmpty) {
